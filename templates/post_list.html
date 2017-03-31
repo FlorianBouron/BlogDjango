@@ -14,10 +14,20 @@
                 {% if object.image %}
                 <img src="{{ object.image.url }}" class="img-responsive"/>
                 {% endif %}
-                 <h3><a href='{{ object.get_absolute_url }}'>{{ object.title }}</a> <small>{{ object.timestamp | timesince }} ago</small></h3>
-                <p>Author: {{ object.user }}</p>
-                <p>{{ object.content | linebreaks | truncatechars:120}}</p>
-                <p><a href="{{ object.get_absolute_url }}" class="btn btn-primary" role="button">View</a></p>
+                <div class="caption">
+                    {% if object.draft %}
+                    <h3>Draft {% if object.publish > today %}Future Post{% endif %}</h3>
+                    {% endif %}
+                    <h3>
+                        <a href='{{ object.get_absolute_url }}'>{{ object.title }}</a>
+                        <small>{{ object.timestamp | timesince }} ago</small>
+                    </h3>
+                    <p>Author: {{ object.user }}</p>
+                    <p>{{ object.content | linebreaks | truncatechars:120}}</p>
+                    <p>
+                        <a href="{{ object.get_absolute_url }}" class="btn btn-primary" role="button">View</a>
+                    </p>
+                </div>
             </div>
         </div>
         {% cycle "" "</div><div class='row'>" %}
