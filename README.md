@@ -1,6 +1,6 @@
 # BlogDjango
 
-A blog made by <3 with Django qnd Python 3.
+A blog made by <3 with Django and Python 3.
 
 ## Usage ##
 Just clone or download and run:
