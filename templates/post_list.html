@@ -14,7 +14,7 @@
                 {% if object.image %}
                 <img src="{{ object.image.url }}" class="img-responsive"/>
                 {% endif %}
-                <div class="caption">
+                <div class="caption post-detail-item">
                     {% if object.draft %}
                     <h3>Draft {% if object.publish > today %}Future Post{% endif %}</h3>
                     {% endif %}
@@ -23,7 +23,7 @@
                         <small>{{ object.timestamp | timesince }} ago</small>
                     </h3>
                     <p>Author: {{ object.user }}</p>
-                    <p>{{ object.content | linebreaks | truncatechars:120}}</p>
+                    {{ object.get_markdown | truncatechars_html:120 }}
                     <p>
                         <a href="{{ object.get_absolute_url }}" class="btn btn-primary" role="button">View</a>
                     </p>
