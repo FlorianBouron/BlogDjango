@@ -41,7 +41,18 @@
             <div class="post-detail-item">{{ instance.get_markdown }}</div>
             <hr/>
             <br/>
-            <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>
+            <div>
+                <p class="lead">Comments</p>
+                {% for comment in comments %}
+                    {{ comment.content_object }}
+                    <div class="">
+                        {{ comment.content }}<br>
+                        by {{ comment.user }}, {{ comment.timestamp|timesince }} ago.<hr>
+                    </div>
+                {% endfor %}
+                <!--{{ instance.comment_set.all }}-->
+            </div>
+            <!--<div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>-->
         </div>
      </div>
 
